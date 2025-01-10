@@ -1,0 +1,21 @@
+<div class="chatbot-container">
+    <div class="chat-header">
+      <h3>Chat with Evine</h3>
+    </div>
+  
+    <div class="chat-body">
+      <div class="message bot-message">
+        <span>Hi there! How can I help you today?</span>
+      </div>
+      <div class="message user-message">
+        <span>Hello! I have a query about the event.</span>
+      </div>
+      <!-- Additional chat messages go here -->
+    </div>
+  
+    <div class="chat-footer">
+      <input type="text" placeholder="Type your message..." [(ngModel)]="userMessage" />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+  

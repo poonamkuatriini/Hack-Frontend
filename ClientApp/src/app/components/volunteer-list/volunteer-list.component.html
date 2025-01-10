@@ -1,0 +1,63 @@
+
+
+<div class="table-container">
+  <h2 class="page-title">Volunteer </h2>
+  <div class="table-responsive volunteer-table">
+    <table class="table table-borderless mb-0">
+      <thead>
+        <tr>
+          <th scope="col" style="width: 40px;">
+            <div class="custom-control custom-checkbox">
+              <input 
+                type="checkbox" 
+                class="custom-control-input" 
+                id="selectAll"
+                [(ngModel)]="selectAll"
+                (change)="toggleAll()">
+              <label class="custom-control-label" for="selectAll"></label>
+            </div>
+          </th>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone Number</th>
+          <th scope="col">College</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let volunteer of volunteers">
+          <td>
+            <div class="custom-control custom-checkbox">
+              <input 
+                type="checkbox" 
+                class="custom-control-input" 
+                [id]="'volunteer' + volunteer.id"
+                [(ngModel)]="volunteer.selected"
+                (change)="updateSelectAll()">
+              <label class="custom-control-label" [for]="'volunteer' + volunteer.id"></label>
+            </div>
+          </td>
+          <th scope="row">{{ volunteer.id }}</th>
+          <td>{{ volunteer.name }}</td>
+          <td>{{ volunteer.email }}</td>
+          <td>{{ volunteer.phone }}</td>
+          <td>{{ volunteer.college }}</td>
+          <td>
+            <span [class]="'badge ' + (volunteer.status === 'active' ? 'badge-success' : 'badge-secondary')">
+              {{ volunteer.status  }}
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="mt-3 d-flex justify-content-end">
+    <button 
+      class="btn btn-primary" 
+      (click)="submitSelected()"
+      [disabled]="!hasSelectedVolunteers">
+      Submit Selected
+    </button>
+  </div>
+</div>
